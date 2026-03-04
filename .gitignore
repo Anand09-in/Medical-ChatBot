@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+data/
+vectorstore/
+.vscode/
+.files/
+.chainlit/
+/vectorstore
