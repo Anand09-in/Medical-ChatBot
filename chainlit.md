@@ -1,11 +1,15 @@
-# Welcome to Llama2 Med-Bot! 🚀🤖
+# 🩺 Medical Knowledge Chatbot
 
-Hi there, 👋 We're excited to have you on board. This is a powerful bot designed to help you ask queries related to your data/knowledge.
+Welcome! This chatbot answers medical questions using information retrieved from a curated medical knowledge base.
 
-## Useful Links 🔗
+You can ask questions such as:
 
-- **Data:** This is the data which has been used as a knowledge base. [Knowledge Base](https://docs.chainlit.io) 📚
-- **Join AI Anytime Community:** Join our friendly [WhatsApp Group](https://discord.gg/ZThrUxbAYw) to ask questions, share your projects, and connect with other developers! 💬
+* What are the symptoms of cancer?
+* What causes hypertension?
+* What are common treatments for diabetes?
 
-Happy chatting! 💻😊
+📚 Answers are generated using relevant medical documents, and sources will be shown when available.
 
+⚠️ **Disclaimer:** This chatbot is for educational purposes only and should not be used as a substitute for professional medical advice. Always consult a qualified healthcare professional for medical concerns.
+
+Ask a question to get started!

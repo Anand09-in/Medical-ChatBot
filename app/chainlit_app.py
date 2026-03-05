@@ -1,28 +1,28 @@
 import chainlit as cl
-import requests
+import httpx
 import logging
+
 API_URL = "http://localhost:8000/query"
-
-@cl.on_chat_start
-async def start():
-    await cl.Message(
-        content="👋 Welcome to Medical RAG Bot!\nAsk your medical question."
-    ).send()
-
 
 @cl.on_message
 async def main(message: cl.Message):
 
     try:
         logging.info(f"Received message: {message.content}")
-        response = requests.post(
-            API_URL,
-            json={"question": message.content},
-            timeout=120
-        )
+
+        # Show loading message
+        msg = cl.Message(content="🤖 Thinking...")
+        await msg.send()
+
+        async with httpx.AsyncClient(timeout=120) as client:
+            response = await client.post(
+                API_URL,
+                json={"question": message.content}
+            )
 
         data = response.json()
         logging.info(f"API response: {data}")
+
         answer = data.get("answer", "No answer found.")
         sources = data.get("sources", [])
 
@@ -31,7 +31,9 @@ async def main(message: cl.Message):
             for s in sources:
                 answer += f"- {s}\n"
 
-        await cl.Message(content=answer).send()
+        # Update the same message with the answer
+        msg.content = answer
+        await msg.update()
 
     except Exception as e:
         await cl.Message(content=f"❌ Error: {str(e)}").send()
