@@ -4,7 +4,7 @@ from langchain_community.document_loaders import DirectoryLoader, PyPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.vectorstores import FAISS
 from langchain_community.embeddings import HuggingFaceEmbeddings
-from config import *
+from app.config import *
 
 logging.basicConfig(
     level=logging.INFO,
@@ -78,3 +78,6 @@ def create_vector_db():
     gc.collect()
 
     logging.info("Vector DB created successfully!")
+
+if __name__ == "__main__":
+    create_vector_db()

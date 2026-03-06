@@ -18,7 +18,10 @@ Before you can start using the Langchain Medical Bot, make sure you have the fol
     - PyPDF2 (for PDF document loading)
 
 Run RAG Backend
-`uvicorn app.main:app --host 0.0.0.0 --port 8000`
+` uvicorn app.main:app --host 0.0.0.0 --port 8000 `
 
 Start Chainlit
-`chainlit run app/chainlit_app.py --port 8001`
+` chainlit run app/chainlit_app.py --port 8001 `
+
+create new faiss vectorDB
+` python -m app.vectorDB.create_vectorDB `

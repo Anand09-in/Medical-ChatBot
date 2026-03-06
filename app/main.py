@@ -1,19 +1,9 @@
-from fastapi import FastAPI, HTTPException
-from .schemas import QueryRequest, QueryResponse
-from .rag_pipeline import RAGPipeline
+from fastapi import FastAPI
+from app.api.routes import router
 
-app = FastAPI(title="Medical RAG API")
+app = FastAPI(
+    title="Medical RAG Chatbot API",
+    version="1.0"
+)
 
-rag = RAGPipeline()
-
-@app.get("/")
-def health_check():
-    return {"status": "healthy"}
-
-@app.post("/query", response_model=QueryResponse)
-def query_bot(request: QueryRequest):
-    try:
-        answer, sources = rag.query(request.question)
-        return QueryResponse(answer=answer, sources=sources)
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+app.include_router(router)
