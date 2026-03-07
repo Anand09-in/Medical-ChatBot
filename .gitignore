@@ -9,3 +9,6 @@ vectorstore/
 .files/
 .chainlit/
 /vectorstore
+.dockerignore
+.dvcignore
+.gitignore
